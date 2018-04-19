@@ -1,0 +1,137 @@
+{
+    "editor.minimap.enabled": false,
+    "files.autoSave": "afterDelay",
+    "git.ignoreMissingGitWarning": true,
+    "regreplace.commands": [
+        //Cleaner
+        {
+            "name": "Remove span tag",
+            "match": "\\.html?$",
+            "regexp": "<span>|<\/span>",
+            "global": true,
+            "replace": ""
+        },
+        {
+            "name": "Remove br tag",
+            "match": "\\.html?$",
+            "regexp": "<br \/>",
+            "global": true,
+            "replace": ""
+        },
+        {
+            "name": "Remove tags p vazias",
+            "match": "\\.html?$",
+            "regexp": "<p>?\\s?.<\/p>",
+            "global": true,
+            "replace": ""
+        },
+        {
+            "name": "Remove tags H# vazias",
+            "match": "\\.html?$",
+            "regexp": "(<h\\d>(\\s?){1,}<\/h\\d>)",
+            "global": true,
+            "replace": ""
+        },
+        {
+            "name": "Formatar Fonte 1",
+            "match": "\\.html?$",
+            "regexp": "(<p><em>Fonte:)(\\s.+)(<\/em><\/p>)",
+            "global": true,
+            "replace": "<p><small>Fonte: $2</small></p>"
+        },
+        {
+            "name": "Formatar Fonte 2",
+            "match": "\\.html?$",
+            "regexp": "<p>(<em>)?Fonte:(<\/em>)?(\\s?<em>\\s?)?((<em>)?(.{1,})(<\/em>))<\/p>",
+            "global": true,
+            "replace": "<p><small>Fonte: $6</small></p>"
+        },
+        {
+            "name": "Formatar Fonte 3",
+            "match": "\\.html?$",
+            "regexp": "<p>(Fonte:)(.+)<\/p>",
+            "global": true,
+            "replace": "<p><small>Fonte: $2</small></p>"
+        },
+        {
+            "name": "Youtube Cleaner",
+            "match": "\\.html?$",
+            "regexp": "(<p><a href=\"(?:https?:\/\/)?(?:www\\.)?youtu(?:\\.be\/|be\\.com\/watch\\?v=|be\\.com\/v\/)[A-Za-z0-9_-]{8,}?.+?\">(.+)<\/a><\/p>)|(<p>((?:https?:\/\/)?(?:www\\.)?youtu(?:\\.be\/|be\\.com\/watch\\?v=|be\\.com\/v\/)[A-Za-z0-9_-]{8,}?.+)?(&.+)<\/p>)",
+            "global": true,
+            "replace": "<p>$2</p>"
+        },
+        {
+            "name": "Vimeo Cleaner",
+            "match": "\\.html?$",
+            "regexp": "<p><a href=\"(?:https?:\/\/)?vimeo.com\/[0-9]{1,}?.+?\">(.+)<\/a><\/p>",
+            "global": true,
+            "replace": "<p>$1</p>"
+        },
+        {
+            "name": "Link Cleaner",
+            "match": "\\.html?$",
+            "regexp": "<p><a href=\"(?:https?:\/\/)?vimeo.com\/[0-9]{1,}?.+?\">(.+)<\/a><\/p>",
+            "global": true,
+            "replace": "<p>$1</p>"
+        },
+        {
+            "name": "Titles tab",
+            "match": "\\.html?$",
+            "regexp": "(<h1>|<h2>|<h3>|<h4>|<h5>|<h6>)",
+            "global": true,
+            "replace": "\n\\1"
+        },
+        // Estilos
+        {
+            "name": "Imagem centralizada",
+            "match": "\\.html?$",
+            "regexp": "(<p>\\[IMG\\]</p>)",
+            "global": true,
+            "replace": "<p class=\"pl-text-center\">[IMG]</p>"
+        },
+        {
+            "name": "Citacao",
+            "match": "\\.html?$",
+            "regexp": "<blockquote>(((?:\\n\\[^\\S \\]<p>)(.{1,})(?:<\/p>)){1,})\\n(?:\\[^\\S \\]<p>(.{1,})<\/p>)\\n<\/blockquote>",
+            "global": true,
+            "replace": "<blockquote>\n$1\n<cite>$5</cite>\n</bloquote>"
+        },
+        {
+            "name": "Link estilo",
+            "match": "\\.html?$",
+            "regexp": "(<p><a href=)",
+            "global": true,
+            "replace": "<p><a class=\"pl-link\" href="
+        },
+        {
+            "name": "Tabela estilo",
+            "match": "\\.html?$",
+            "regexp": "(<table>)",
+            "global": true,
+            "replace": "<table class=\"pl-table\">"
+        },
+        {
+            "name": "Embedar Youtube",
+            "match": "\\.html?$",
+            "regexp": "(?:<p>)(?:https?://)?(?:www\\.)?vimeo(?:\\.com/)([0-9]{8,})(?:</p>)",
+            "global": true,
+            "replace": "<div class=\"pl-embed-video\"><iframe src=\"https://player.vimeo.com/video/\\1?title=0&byline=0&portrait=0\" width=\"640\" height=\"470\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>\\n"
+        },
+        {
+            "name": "Embedar Vimeo",
+            "match": "\\.html?$",
+            "regexp": "(?:<p>)(?:https?://)(?:https?://)?(?:www\\.)?youtu(?:.be/|be\\.com/watch\\?v=|be\\.com/v/)([A-Za-z0-9_-]{8,})(?:</p>)",
+            "global": true,
+            "replace": "<div class=\"pl-embed-video\">\\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>\\n</div>\\n"
+        },
+        {
+            "name": "Remove Atributo Style",
+            "match": "\\.html?$",
+            "regexp": "\\sstyle=\".+?\"",
+            "global": true,
+            "replace": ""
+        }
+    ],
+"workbench.activityBar.visible": true,
+"regreplace.on-save": false
+}
